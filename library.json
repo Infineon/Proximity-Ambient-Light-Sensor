@@ -1,0 +1,17 @@
+{  
+    "name":"Proximity-Ambient-Light-Sensor",
+    "keywords":"proximity, ambient light, hall, sensor, infrared, sensor2go, PALS2, shield2go",
+    "description":"This library provides an interface to Proximity and Ambient Light Sensor PALS2.",
+    "repository":{  
+       "type":"git",
+       "url":"https://github.com/Infineon/Proximity-Ambient-Light-Sensor.git",
+       "branch":"master"
+    },
+    "version":"1.0.0",
+    "license":"MIT",
+    "frameworks":"arduino",
+    "platforms":[  
+       "infineonxmc",
+       "atmelavr"
+    ]
+ }
