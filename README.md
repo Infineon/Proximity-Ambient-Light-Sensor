@@ -1,6 +1,6 @@
 # Proximity-Ambient-Light-Sensor
 
-[![Build Status](https://travis-ci.org/Infineon/Proximity-Ambient-Light-Sensor.svg?branch=master)](https://travis-ci.org/Infineon/Proximity-Ambient-Light-Sensor)
+[![Build Status](https://travis-ci.com/Infineon/Proximity-Ambient-Light-Sensor.svg?branch=master)](https://travis-ci.com/Infineon/Proximity-Ambient-Light-Sensor)
 
 Library of Infineon's Proximity and Ambient Light **PALS2 Sensor** for Arduino.
 
