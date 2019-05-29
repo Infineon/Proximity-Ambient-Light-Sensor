@@ -2,7 +2,7 @@
  * @page The Arduino Library for the proximity and ambient light sensor PALS-2
  * @section introduction Introduction
  
- * The Infineon PALS-2 (packaged by Vishay as VCNL4135X01) is a proximity and ambient light
+ * The Infineon PALS-2 is a proximity and ambient light
  * sensor. It offers proximity and ambient light readings with 16-bit resolution. I2C protocol
  * is used to communicate with the host microcontroller. It can be used for gesture recognition,
  * touch screen locking and dimming of displays.
@@ -190,12 +190,7 @@ void setAmbientLightPeriodicMeasurements(uint8_t enable_value);
 	 * @param topThreshold Upper threshold. By default 65536
 	 * @param bottomThreshold Lower threshold. By default 0
 	 */
-	 
-	/**
-	 * @brief For light sources with high intensity color compensation should be enabled (additional reading of blue PD will be conducted).
-	 * @param colorCompPeriod The period of color compensation measurement; 0 for a shorter period (0 to 10ms) and 1 for a longer period (10 to 100ms)
-	 */
-	
+	void setAmbientLightInterrupt(uint16_t topThreshold, uint8_t valuetop, uint16_t bottomThreshold, uint8_t valuebottom);	 
 
 	/**
 	 * @brief Sets the ADC gain, which affects the calculation of illuminance. A higher ADC gain leads to a higher illuminance value.
@@ -209,13 +204,11 @@ void setAmbientLightPeriodicMeasurements(uint8_t enable_value);
 	 */
 	void setAmbientLightMeasurementRate(uint8_t alsRate);
 	
-	void setAmbientLightInterrupt(uint16_t topThreshold, uint8_t valuetop, uint16_t bottomThreshold, uint8_t valuebottom);
+
 	void clearAmbientLightInterrupts(void);
- uint16_t readAmbientLight(void);
+    uint16_t readAmbientLight(void);
 
  
- 
- gesture_t GestureAlgorithm(proximity_Samples_t *samples);
  
 	void writeOut(uint16_t regNum, uint16_t val);
 	uint8_t dumpRegister(uint8_t regNum);
