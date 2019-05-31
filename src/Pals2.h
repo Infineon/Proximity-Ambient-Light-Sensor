@@ -164,8 +164,6 @@ public:
 	 * @return True if operation successful. False otherwise.
 	 */	 	
 	void clearProximityInterrupts(void);
-	
-
 
 	/**
 	 * @brief Reads the proximity level as a 16-bit value
@@ -204,12 +202,22 @@ void setAmbientLightPeriodicMeasurements(uint8_t enable_value);
 	 */
 	void setAmbientLightMeasurementRate(uint8_t alsRate);
 	
-
+	/**
+	 * @brief Clears AL-related inputs
+	 *
+	 * @return True if operation successful. False otherwise.
+	 */	 
 	void clearAmbientLightInterrupts(void);
+	
+	/**
+	 * @brief Reads the Ambient Light level as a 16-bit value
+	 *
+	 * @return True if operation successful. False otherwise.
+	 */	 	
     uint16_t readAmbientLight(void);
 
  
- 
+	/* Public utility functions */
 	void writeOut(uint16_t regNum, uint16_t val);
 	uint8_t dumpRegister(uint8_t regNum);
 	
