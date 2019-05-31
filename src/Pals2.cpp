@@ -105,8 +105,6 @@ uint16_t Pals2::getRawProximityOnDemand(void) {
 		//set time out in case sensor gets stuck
 		if (millis() - start > 1000)
 			break;
-		
-		Wire.endTransmission();
 	}
 	
 	
@@ -288,8 +286,6 @@ void Pals2::setAmbientLightADCGain(uint16_t adcGain, bool isHalved) {
 		//set time out in case sensor gets stuck
 		if (millis() - start > 1000)
 			break;
-		
-		Wire.endTransmission();
 	}
 	
 	wireReadDataBlock(ALS_MSB,(uint8_t*)als_data,2);
@@ -328,10 +324,8 @@ void Pals2::writeOut(uint16_t regNum, uint16_t val) {
 uint8_t Pals2::dumpRegister(uint8_t regNum) {
 	
 	uint8_t value;
-	Wire.beginTransmission(SLAVE_ADDRESS);
     Wire.requestFrom(SLAVE_ADDRESS, 1, regNum, PALS2_REG_SIZE_BYTES, 0);
 	value = Wire.read();
-	Wire.endTransmission();
 	return value;
 }
 
@@ -350,14 +344,11 @@ uint8_t Pals2::dumpRegister(uint8_t regNum) {
 uint8_t Pals2::wireReadDataByte(uint8_t reg)
 {
     uint8_t val=0;
-    Wire.beginTransmission(SLAVE_ADDRESS);
     /* Read from register */
     Wire.requestFrom(SLAVE_ADDRESS, 1,reg,PALS2_REG_SIZE_BYTES,0);
     while (Wire.available()) {
         val = Wire.read();
     }
-	
-	Wire.endTransmission();
     return val;
 }
 
@@ -373,7 +364,6 @@ int Pals2::wireReadDataBlock(   uint8_t reg, uint8_t *val, unsigned int len)
 {
     unsigned char i = 0;
     
-    Wire.beginTransmission(SLAVE_ADDRESS);
     /* Read block data */
     Wire.requestFrom(SLAVE_ADDRESS, len,reg,1,0);
     while (Wire.available()) {
@@ -383,7 +373,6 @@ int Pals2::wireReadDataBlock(   uint8_t reg, uint8_t *val, unsigned int len)
         val[i] = Wire.read();
         i++;
     }
-	Wire.endTransmission();
     return i;
 }
 
@@ -420,7 +409,7 @@ bool Pals2::wireWriteDataBlock(  uint8_t reg, uint8_t *val, unsigned int len)
     Wire.beginTransmission(SLAVE_ADDRESS);
     Wire.write(reg);
     for(i = 0; i < len; i++) {
-        Wire.beginTransmission(val[i]);
+        Wire.write(val[i]);
     }
     if( Wire.endTransmission() != 0 ) {
         return false;
